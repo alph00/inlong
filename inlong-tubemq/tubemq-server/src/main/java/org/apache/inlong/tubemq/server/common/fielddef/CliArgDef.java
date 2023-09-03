@@ -112,7 +112,52 @@ public enum CliArgDef {
     AUTHTOKEN("token", "auth-token",
             "String: API operation authorization code",
             "API operation authorization code,"
-                    + " required when adding or modifying, optional when querying");
+                    + " required when adding or modifying, optional when querying"),
+
+    BROKERID(null, "brokerId",
+            "String: broker id",
+            "The broker to operator on."),
+    TNAME("name", "topicName", "String:the topic name", ""),
+    DELETEWHEN(null, "deleteWhen",
+            "String: default deleting time of the topic data. " +
+                    "The format should like cronjob form 0 0 6, 18 * * ?"),
+    DELETEPOLICY(null, "deletePolicy",
+            "Int: default policy for deleting, default: \"delete, 168\"",
+            "default policy for deleting, default: \"delete, 168\""),
+    NUMPARTITIONS(null, "numPartitions",
+            "Int: default partition number of a default topic on the broker. default: 3",
+            "default partition number of a default topic on the broker. default: 3"),
+    UNFLUSHTHRESHOLD(null, "unflushThreshold",
+            "Int: maximum message number which allows in memory. " +
+                    "It has to be flushed to disk if the number exceed this value. Default 1000"),
+    ACCEPTSUBSCRIBE(null, "acceptSubscribe",
+            "bool: if topic accepts subscribe",
+            "Determine if topic accepts subscribe."),
+    ACCEPTPUBLISH(null, "acceptPublish",
+            "bool: if topic accepts publish",
+            "Determine if topic accepts publish."),
+    NUMTOPICSTORES(null, "numTopicStores",
+            "Int: the number of data block and partition group allowed to create, default: 1. " +
+                    "If it's larger than 1, the partition number and topic number should be mapping with this value"),
+    UNFLUSHINTERVAL(null, "unflushInterval",
+            "Int:the maximum interval for unflush, default 1000ms",
+            "the maximum interval for unflush, default 1000ms"),
+    MEMCACHEMSGCNTINK(null, "memCacheMsgCntInK",
+            "Int:the max cached message package, default is 10, the unit is K",
+            "the max cached message package, default is 10, the unit is K"),
+    MEMCACHEMSGSIZEINMB(null, "memCacheMsgSizeInMB",
+            "Int:the max cache message size in MB, default 3",
+            "the max cache message size in MB, default 3"),
+    MEMCACHEFLUSHINTVL(null, "memCacheFlushIntvl",
+            "Int:the max unflush interval in ms, default 20000",
+            "the max unflush interval in ms, default 20000"),
+    MODIFYUSER(null, "modifyUser",
+            "String:the modifier", "the modifier"),
+    CREATEUSER(null, "createUser",
+            "String:the creator", "the creator"),
+    CONFMODAUTHTOKEN(null, "confModAuthToken",
+            "String:the authorized key for configuration update",
+            "the authorized key for configuration update");
 
     CliArgDef(String opt, String longOpt, String optDesc) {
         this(opt, longOpt, false, "", optDesc);
